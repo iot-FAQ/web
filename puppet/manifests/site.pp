@@ -37,4 +37,9 @@ class {'::mongodb::server':
 }->
 class {'::mongodb::client':}
 
+# Process database
 include database
+
+# Configure the application
+include application
+

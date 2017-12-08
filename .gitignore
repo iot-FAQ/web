@@ -4,6 +4,12 @@
 .pydevproject
 .vagrant
 
+# data
+data/cache/*
+!data/cache/.gitkeep
+data/storage/*
+!data/storage/.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

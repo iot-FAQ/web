@@ -31,7 +31,7 @@ def get_config():
             max_width = 2048,
             # Max height of the image
             max_height = 1024,
-            # Max file size (in Mb)
+            # Max file size (in bytes)
             max_size = 2048000
             )
         

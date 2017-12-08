@@ -101,6 +101,13 @@ Handling index view. Basically, this is just a placeholder, nothing here is so f
 @view_config(route_name='index', request_method='GET')
 def index(request):
 
-    return Response("Index!")
-    
+    return Response("Index! It works!")
+
+'''
+Listing all available files
+'''
+@view_config(route_name='files_list', request_method='GET')
+def files_list(request):
+
+    return Response("Listing! It works!")
     

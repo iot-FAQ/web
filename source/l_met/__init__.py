@@ -18,6 +18,7 @@ def main(global_config, **settings):
     config.add_route('index', '/')
     config.add_route('upload_form', '/upload/form')
     config.add_route('upload_action', '/upload/action')
+    config.add_route('files_list', '/files/list')
     
     #views
     config.add_view(views.index, route_name='index')

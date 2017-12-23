@@ -14,7 +14,7 @@
 * Download the source code and go to the source code root (where you see ```Vagrantfile``` present) and run the commands below
 * Add Vagrant CentOS 7 Linux VM
 ```
-vagrant box add centos/7
+vagrant box add centos/7 --provider virtualbox
 ```
 * Install Vagrant Guest Additions plugin:
 ```
@@ -36,4 +36,24 @@ Once provisioned, virtual machine runs headless and serves "l-Met" website. Sour
 ```
 vagrant reload
 ```
-* NOTE: There's no need to reload or restart the VM in case modify the source. You simply work with it like you are doing this on your local machine.
+* NOTE: There's no need to reload or restart the VM in case modify the source. You simply work with it like you are doing this on your local machine. However, there's a need to reload Apache HTTPD on the VM when changing the source code
+
+### Working on the VM
+* Entering VM's shell:
+```
+vagrant ssh
+```
+You'll get this when successful (example):
+```
+macbook222:I-Met rpavlyuk$ vagrant ssh
+Last login: Fri Dec  8 15:15:09 2017 from 10.0.2.2
+[vagrant@localhost ~]$
+```
+* You need to reload Apache HTTPD whenever you make a change to the source code:
+```
+sudo systemctl reload httpd
+```
+* Monitoring log file of the application (use CTRL+C to abort):
+```
+sudo tail -f /var/log/httpd/error_log
+```

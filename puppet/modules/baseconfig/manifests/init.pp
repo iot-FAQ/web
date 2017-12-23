@@ -3,9 +3,10 @@
 # Performs initial configuration tasks for all Vagrant boxes.
 #
 class baseconfig {
-  exec { 'yum update -y':
-    command => '/usr/bin/yum update -y';
-  }
+
+#  exec { 'yum update -y':
+#    command => '/usr/bin/yum update -y';
+#  }
   
   package { ['bash-completion',
              'net-tools',

@@ -57,3 +57,10 @@ sudo systemctl reload httpd
 ```
 sudo tail -f /var/log/httpd/error_log
 ```
+
+### Working with Source Code
+* To get code updates from Github:
+```
+git pull
+```
+* **NOTE**: On Windows, you should open ```cmd```, go to the directory where you have your source code and execute the command there.

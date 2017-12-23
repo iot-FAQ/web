@@ -14,7 +14,7 @@
 * Download the source code and go to the source code root (where you see ```Vagrantfile``` present) and run the commands below
 * Add Vagrant CentOS 7 Linux VM
 ```
-vagrant box add centos/7
+vagrant box add centos/7 --provider virtualbox
 ```
 * Install Vagrant Guest Additions plugin:
 ```

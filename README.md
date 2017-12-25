@@ -28,7 +28,7 @@ vagrant up --provider virtualbox
 ```
 vagrant provision
 ```
-The web site becomes available at http://localhost:8080/ once the provisioning is completed.
+The web site becomes available at http://localhost:8999/ once the provisioning is completed.
 
 ### Using the Dev VM
 Once provisioned, virtual machine runs headless and serves "l-Met" website. Source folder is automatically mounted to the correspoding directory on the WEB Server so there's not to copy sources to the VM

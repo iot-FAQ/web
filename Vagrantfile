@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "./", "/var/www/sites/project",  mount_options: ["uid=48", "gid=48"]
+  config.vm.synced_folder "./", "/var/www/sites/project"
   # config.vm.synced_folder "./source/l_met", "/usr/lib/python2.7/site-packages/l_met"
 
   # Provider-specific configuration so you can fine-tune various

@@ -5,7 +5,7 @@
 class application {
 
   exec { 'storage ownership':
-     command  => "/bin/chown -R apache:apache /var/www/sites/project/data",
+     command  => "/bin/chown -R vagrant:vagrant /var/www/sites/project/data",
      require  => Package['httpd'],
   }
 

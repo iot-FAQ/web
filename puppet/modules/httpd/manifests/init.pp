@@ -30,7 +30,12 @@ class httpd {
   exec { 'apache chown':
      command  => "/bin/chown -R apache:apache /var/www/sites/project",
      require  => Package['httpd'],
-}
+ }
+
+  exec { 'storage ownership fix':
+     command  => "/bin/chown -R vagrant:vagrant /var/www/sites/project/data",
+     require  => Exec['apache chown'],
+  }
 
 
 }

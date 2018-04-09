@@ -23,7 +23,6 @@ def login():
     if request.method == 'POST':
         user = mongo.db.users
         login_user = user.find_one({'name': request.form['username']})
-
         if login_user:
             if bcrypt.hashpw(request.form['pass'].encode('utf-8'),
                              login_user['password']) == login_user['password']:
@@ -62,6 +61,15 @@ def logged_in():
     if 'username' in session:
         return 'You are logged in as ' + session['username']
     return render_template('index.html')
+
+
+@app.route('/chart/<name>')
+def chart(name):
+    users = mongo.db.users
+    user = users.find_one({'name': name})
+    labels = user['days']
+    values = user['days']
+    return render_template('chart.html', values=values, labels=labels)
 
 
 if __name__ == '__main__':

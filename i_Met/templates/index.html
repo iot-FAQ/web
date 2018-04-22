@@ -68,8 +68,8 @@
                 <div class="col-sm-6 col-xs-12">
                     <div class="call-us-text text-right">
 
-                        <a href="index.html#" class="signin">Зареєструватись</a>
-                        <a href="index.html#" class="signin">Увійти</a>
+                        <a href="{{ url_for('register') }}" class="signin">Зареєструватись</a>
+                        <a href="{{ url_for('login') }}" class="signin">Увійти</a>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                                     data-target="#navbar-menu">
                                 <i class="fa fa-bars"></i>
                             </button>
-                            <a class="navbar-brand" href="index.html#brand">
+                            <a class="navbar-brand" href="{{ url_for('index') }}">
                                 <img src="{{ url_for('static', filename='images/icon.png') }}"
                                      class="logo logo1 logo-display" alt="">
                                 <img src="{{ url_for('static', filename='images/icon.png') }}"
@@ -101,14 +101,14 @@
                         <div class="collapse navbar-collapse" id="navbar-menu">
                             <ul class="nav navbar-nav navbar-right m-top-20" data-in="fadeIn" data-out="fadeOut">
 
-                                <li class="active"><a href="index.html#home">Головна</a></li>
+                                <li class="active"><a href="{{ url_for('index') }}">Головна</a></li>
                                 <li><a href="#product">Про проект</a></li>
                                 <li><a href="#service">Наші переваги</a></li>
                                 <li><a href="#featured">Про датчик</a></li>
                                 <li><a href="#main-product">Застосунок</a></li>
                                 <li><a href="#pricing">Вартість</a></li>
                                 <li><a href="#contacts">Контакти</a></li>
-                                <li><a href="login.html">Увійти</a></li>
+                                <li><a href="{{ url }}">{{ name }}</a></li>
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div>
@@ -396,13 +396,13 @@
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="brand-itemv1">
-                                    <a href="index.html"><img
+                                    <a href="{{ url_for('index') }}"><img
                                             src="{{ url_for('static', filename='images/lvivHaz.jpg') }}" alt=""/></a>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3 xs-m-top-20">
                                 <div class="brand-itemv1">
-                                    <a href="index.html"><img src="{{ url_for('static', filename='images/iot.png') }}"
+                                    <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/iot.png') }}"
                                                               alt=""/></a>
                                 </div>
                             </div>
@@ -456,7 +456,7 @@
 
         </div><!--End of home page style-->
         <div class="scrollup">
-            <a href="index.html#" class="hvr-hang"><span class="arrow_up"></span></a>
+            <a href="{{ url_for('index') }}" class="hvr-hang"><span class="arrow_up"></span></a>
         </div>
         <!-- JS includes -->
         <script src="{{ url_for('static', filename='js/vendor/jquery-1.11.2.min.js') }}"></script>

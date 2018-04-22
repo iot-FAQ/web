@@ -258,8 +258,8 @@ ul{
 .hvr-hang:hover, .hvr-hang:focus, .hvr-hang:active {
     -webkit-animation-name: hvr-hang-sink, hvr-hang;
     animation-name: hvr-hang-sink, hvr-hang;
-    -webkit-animation-duration: .3s, 1.5s;
-    animation-duration: .3s, 1.5s;
+    -webkit-animation-duration: .3s, 3s;
+    animation-duration: .3s, 3s;
     -webkit-animation-delay: 0s, .3s;
     animation-delay: 0s, .3s;
     -webkit-animation-timing-function: ease-out, ease-in-out;
@@ -759,8 +759,8 @@ textarea::-ms-input-placeholder{
     -ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
-    -webkit-animation: loading-center-absolute 1.5s infinite;
-    animation: loading-center-absolute 1.5s infinite;
+    -webkit-animation: loading-center-absolute 3s infinite;
+    animation: loading-center-absolute 3s infinite;
 
 }
 .object{
@@ -772,20 +772,20 @@ textarea::-ms-input-placeholder{
 }
 
 #object_one {
-    -webkit-animation: object_one 1.5s infinite;
-    animation: object_one 1.5s infinite;
+    -webkit-animation: object_one 3s infinite;
+    animation: object_one 3s infinite;
 }
 #object_two {
-    -webkit-animation: object_two 1.5s infinite;
-    animation: object_two 1.5s infinite;
+    -webkit-animation: object_two 3s infinite;
+    animation: object_two 3s infinite;
 }
 #object_three {
-    -webkit-animation: object_three 1.5s infinite;
-    animation: object_three 1.5s infinite;
+    -webkit-animation: object_three 3s infinite;
+    animation: object_three 3s infinite;
 }
 #object_four {
-    -webkit-animation: object_four 1.5s infinite;
-    animation: object_four 1.5s infinite;
+    -webkit-animation: object_four 3s infinite;
+    animation: object_four 3s infinite;
 }
 
 
@@ -960,7 +960,7 @@ Navbar Nav Menu home v2
 .no-background .hv2-main-menu-bg{
     margin-top: 20px;
 }
-nav.navbar.bootsnav ul.nav li > a{
+nav..bootsnav ul.nav li > a{
     padding: 7px 23px;
     border: 1px solid transparent;
     font-weight: normal;
@@ -1014,19 +1014,19 @@ home banner
 }
 
 
-/*Featured section*/
-.featured-content{
+/*controller section*/
+.controller-content{
     position: relative;
 }
 
 .contact-form .btn-default,
 .help .btn-default,
 .pricing-item .btn-default,
-.main-product-slid .btn.btn-default,
-.product-head .btn-default,
+.app-slid .btn.btn-default,
+.about-head .btn-default,
 .newsletter-content .btn-default,
-.product-items .btn-default,
-.featured-content .btn-default{
+.about-items .btn-default,
+.controller-content .btn-default{
     border-color:#0891f9;
     color:#0891f9;
 }
@@ -1034,22 +1034,22 @@ home banner
 .contact-form .btn-default:hover,
 .help .btn-default:hover,
 .pricing-item .btn-default:hover,
-.main-product-slid .btn.btn-default:hover,
-.product-head .btn-default:hover,
+.app-slid .btn.btn-default:hover,
+.about-head .btn-default:hover,
 .newsletter-content .btn-default:hover,
-.product-items .btn-default:hover,
-.featured-content .btn-default:hover{
+.about-items .btn-default:hover,
+.controller-content .btn-default:hover{
     border-color:#0891f9;
     background-color: #0891f9;
     color:#fff;
 }
 
-.featured-slide {
+.controller-slide {
     margin-top: -150px;
     padding-left: 40px;
 }
 
-.featured-slide .slide{
+.controller-slide .slide{
     background-color: #f7f7f7;
     border:1px solid #ddd;
     padding:40px;
@@ -1058,14 +1058,14 @@ home banner
 
 /* my code */
 
-.featured-items {
+.controller-items {
     display: inline-block;
     position: relative;
     width: 475px;
     margin: 0 auto;
 }
 
-.featured-items .slick-arrow{
+.controller-items .slick-arrow{
     position: absolute;
     transform: translateY(-50%);
     z-index: 10;
@@ -1073,16 +1073,16 @@ home banner
     font-size: 22px;
     cursor: pointer;
 }
-.featured-items .slick-arrow.nextprevleft{
+.controller-items .slick-arrow.nextprevleft{
     top:80px;
 }
-.featured-items .slick-arrow.nextprevright{
+.controller-items .slick-arrow.nextprevright{
     top:120px;
 }
-.featured-items .slide-count-wrap span{
+.controller-items .slide-count-wrap span{
     font-size:22px;
 }
-.featured-items .slick-dots{
+.controller-items .slick-dots{
     bottom: -60px;
 }
 
@@ -1102,42 +1102,42 @@ home banner
     font-family: montserratlight;
     font-size: 18px;
 }
-.featured-items .slick-arrow{
+.controller-items .slick-arrow{
     font-size: 40px;
 }
-.featured-items .slick-arrow.nextprevleft{
+.controller-items .slick-arrow.nextprevleft{
     top: 40%;
 }
-.featured-items .slick-arrow.nextprevright{
+.controller-items .slick-arrow.nextprevright{
     top: 52%;
 }
 
 
-/*service section*/
-.service {
+/*benefits section*/
+.benefits {
     background: #f7f7f7 none repeat scroll 0 0;
     padding: 80px 0 90px;
 }
-.service-title h2{
+.benefits-title h2{
     font-size: 30px;
 }
-.service-title p{
+.benefits-title p{
     color: #000;
 }
-.main-service{
+.main-benefits{
     width: 100%;
     overflow: hidden;
 }
-.service-item, .blog-post{
+.benefits-item, .blog-post{
     box-shadow: 0 5px 5px #ccc;
 }
-.service-item {
+.benefits-item {
     margin: 15px 0;
     padding: 30px 40px;
     position: relative;
     transition: all 0.6s ease 0s;
 }
-.service-item span{
+.benefits-item span{
     width:90px;
     height: 90px;
     line-height: 90px;
@@ -1171,27 +1171,29 @@ transition: all 0.6s;
     top: -125px;
     font-size: 365px;
 }
-.service-item:hover.alfa:before, .pricing-item:hover.alfa:before{
+.benefits-item:hover.alfa:before, .pricing-item:hover.alfa:before{
     opacity: 0;
 }
 
-/*Product section*/
-.main-product {
-    background: url(../images/product-bg-01.jpg) no-repeat right top;
+/*about section*/
+.app {
+    background: url(../images/app1.jpg) no-repeat right top;
+    background-size: 50%;
+
 }
-.head-title.product-head h2 {
+.head-title.about-head h2 {
     line-height: 41px;
     font-size: 30px;
 }
-.product-item {
+.about-item {
     background-color: #fff;
     padding: 30px;
 }
-.product-slider {
+.about-slider {
     margin: 50px 25px 25px;
     padding: 0;
 }
-.product-item h2 {
+.about-item h2 {
     font-size: 36px;
     color: #3a3a3a;
 }
@@ -1203,13 +1205,13 @@ transition: all 0.6s;
     top:0px;
 }
 
-.product-slider .slick-dots {
+.about-slider .slick-dots {
     display: block;
     width: 10px;
     top: 45%;
     left: -50px;
 }
-.main-product-slid .btns {
+.app-slid .btns {
     margin-bottom: -10px;
 }
 
@@ -1223,7 +1225,7 @@ transition: all 0.6s;
     box-shadow: 0 5px 5px #ccc;
     transition: all 0.6s;
 }
-.newsletter-content .form-control:focus, .brand-itemv1:hover, .service-item:hover, .product-slider, .pricing-item:hover, .contact-form .form-control:focus, #filters a:hover, a.is-checked, .tags a:hover,.catagories-menu a:hover{
+.newsletter-content .form-control:focus, .brand-itemv1:hover, .benefits-item:hover, .about-slider, .pricing-item:hover, .contact-form .form-control:focus, #filters a:hover, a.is-checked, .tags a:hover,.catagories-menu a:hover{
     box-shadow: 0 0 25px #b4defd;
 }
 
@@ -1492,17 +1494,17 @@ article .comments{
     border: 1px solid #e9e9e9;
     float: left;
     margin: 5px;
-}
+}a
 
 .logo1 {
-  height: 75px;
-  width:100px;
+  height: 100px;
+  width:13ф0px;
   padding-top: 0px;
 }
 
 .logo2 {
   height: 35px;
 
-  width:75px;
+  width:50px;
   padding-top: 0px;
 }

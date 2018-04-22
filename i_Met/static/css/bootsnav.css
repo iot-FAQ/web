@@ -523,7 +523,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     }
 
     nav.navbar.bootsnav ul.nav > li > a{
-        padding: 30px 15px;
+        padding: 20px 30px;
         font-weight: 600;
     }
 
@@ -638,7 +638,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     }
 
     /* Navbar Transparent
-    =================================*/  
+    =================================*/
     nav.navbar.bootsnav.no-background{
         background-color: transparent;
         border: none;
@@ -700,7 +700,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     }
 
     /* Atribute Navigation
-    =================================*/    
+    =================================*/
     .attr-nav > ul > li.dropdown ul.dropdown-menu{
         margin-top: 0;
         margin-left: 55px;
@@ -832,7 +832,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     /* Navbar Sidebar
     =================================*/
     body.wrap-nav-sidebar .wrapper{
-        padding-left: 260px; 
+        padding-left: 260px;
         overflow-x: hidden;
     }
 
@@ -847,7 +847,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
         -webkit-box-shadow: 1px 0px 1px 0px #eee;
         -o-box-shadow: 1px 0px 1px 0px #eee;
         box-shadow: 1px 0px 1px 0px #eee;
-    }  
+    }
 
     nav.bootsnav.navbar-sidebar .scroller{
         width: 280px;
@@ -992,7 +992,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
 
 @media (max-width: 1023px) {
     /* Navbar Responsive
-    =================================*/ 
+    =================================*/
     nav.navbar.bootsnav .navbar-brand    {
         display: inline-block;
         float: none !important;
@@ -1015,7 +1015,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     }
 
     nav.navbar.bootsnav .navbar-collapse {
-        border: none;   
+        border: none;
         margin-bottom: 0;
     }
 
@@ -1246,7 +1246,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     }
 
     /* Navbar full Responsive
-    =================================*/   
+    =================================*/
     nav.bootsnav.navbar-full ul.nav{
         margin-left: 0;
     }
@@ -1273,14 +1273,14 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     }
 
     /* Navbar Sidebar
-    =================================*/ 
+    =================================*/
     nav.navbar.bootsnav.navbar-sidebar .share{
         padding: 30px 15px;
         margin-bottom: 0;
     }
 
     /* Tabs
-    =================================*/ 
+    =================================*/
     nav.navbar.bootsnav .megamenu-content.tabbed{
         padding-left: 0 !mportant;
     }
@@ -1291,7 +1291,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     }
 
     /* Mobile Navigation
-    =================================*/     
+    =================================*/
     body > .wrapper{
         -webkit-transition: all 0.3s ease-in-out;
         -moz-transition: all 0.3s ease-in-out;
@@ -1425,13 +1425,13 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     }
 
     /* Navbar Sidebar
-    =================================*/ 
+    =================================*/
     nav.navbar.bootsnav.navbar-sidebar .share{
         padding: 30px 15px !important;
     }
 
     /* Navbar Sidebar
-    =================================*/ 
+    =================================*/
     nav.navbar.bootsnav.navbar-sidebar .share{
         padding: 30px 0 !important;
         margin-bottom: 0;
@@ -1443,7 +1443,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     }
 
     /* Mobile Navigation
-    =================================*/ 
+    =================================*/
     body.side-right > .wrapper{
         margin-left: 280px;
         margin-right: -280px !important;

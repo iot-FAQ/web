@@ -1,6 +1,7 @@
-from flask import Flask, redirect, url_for, request, render_template, session, flash
+from flask import Flask, redirect, url_for, request, render_template, session, flash, Response
 from flask_pymongo import PyMongo
 import bcrypt
+from authy.api import AuthyApiClient
 from pymongo import MongoClient
 
 app = Flask(__name__)
@@ -12,6 +13,42 @@ app.config['MONGO_DBNAME'] = 'i-met'
 app.config['MONGO_URI'] = 'mongodb://Olga:olichka121@ds121289.mlab.com:21289/i-met'
 
 mongo = PyMongo(app)
+app.config.from_object('config')
+api = AuthyApiClient(app.config['AUTHY_API_KEY'])
+app.secret_key = app.config['SECRET_KEY']
+
+
+@app.route('/phone', methods=["GET", "POST"])
+def phone():
+    if request.method == "POST":
+        country_code = request.form.get("country_code")
+        phone_number = request.form.get("phone_number")
+
+        session['country_code'] = country_code
+        session['phone_number'] = phone_number
+
+        api.phones.verification_start(phone_number, country_code, via='sms')
+
+        return redirect(url_for("verify"))
+    return render_template('phone.html')
+
+
+@app.route("/verify", methods=["GET", "POST"])
+def verify():
+    if request.method == "POST":
+        token = request.form.get("token")
+
+        phone_number = session.get("phone_number")
+        country_code = session.get("country_code")
+
+        verification = api.phones.verification_check(phone_number,
+                                                     country_code,
+                                                     token)
+
+        if verification.ok():
+            return Response("<h1>Success!</h1>")
+
+    return render_template("verify.html")
 
 
 @app.route('/')
@@ -33,6 +70,14 @@ def login():
             if bcrypt.hashpw(request.form['password'].encode(encoding='UTF-8', errors='strict'),
                              login_user['password']) == \
                     login_user['password']:
+                # hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+                # user.insert({'email': request.form['email'], 'password': hashpass,
+                #              'account_num': {'type': {'gas': {'3663434534': {
+                #                  'date': {'18': {'04': {'22': '100', '23': '150', '24': '200',
+                #                                         '25': '280'}}}}},
+                #                  'water': {'3663434534': {
+                #                      'date': {'18': {'04': {'22': '150', '23': '100', '24': '180',
+                #                                             '25': '140'}}}}}}}})
                 session['user'] = request.form['email']
                 return redirect(url_for('index'))
     return render_template('login.html')
@@ -65,7 +110,20 @@ def user():
 
 @app.route('/user_cabinet')
 def user_cabinet():
-    return render_template('user-cabinet.html')
+    types = []
+    values = []
+    labels = []
+    users = mongo.db.users.find_one({'email': 'olichka121@ukr.net'})
+    for type in users['account_num']['type']:
+        types.append(type)
+    gas = users['account_num']['type'][types]['gas']
+    water = users['account_num']['type'][types]['water']
+    for dt in users['account_num']['3663434534']['date']:
+        labels.append(dt)
+    for dates in users['account_num']['3663434534']['date']:
+        values.append(users['account_num']['3663434534']['date'][dates])
+    return render_template('user-cabinet.html', values=values, labels=labels)
+    # return render_template('user-cabinet.html')
 
 
 @app.route('/gas')
@@ -76,14 +134,14 @@ def gas():
 @app.route('/water')
 def water():
     # if 'user' in session:
-        values = []
-        labels = []
-        users = mongo.db.users.find_one({'email': 'olichka121kr76@gmail.com'})
-        for dt in users['account_num']['3663434534']['date']:
-            labels.append(dt)
-        for dates in users['account_num']['3663434534']['date']:
-            values.append(users['account_num']['3663434534']['date'][dates])
-        return render_template('water.html', values=values, labels=labels)
+    values = []
+    labels = []
+    users = mongo.db.users.find_one({'email': 'olichka121kr76@gmail.com'})
+    for dt in users['account_num']['3663434534']['date']:
+        labels.append(dt)
+    for dates in users['account_num']['3663434534']['date']:
+        values.append(users['account_num']['3663434534']['date'][dates])
+    return render_template('water.html', values=values, labels=labels)
     # return render_template('water.html', values="", labels="")
 
 
@@ -106,5 +164,4 @@ def chart():
 
 
 if __name__ == '__main__':
-    app.secret_key = 'Smart_foolish_counter'
     app.run(debug=True)

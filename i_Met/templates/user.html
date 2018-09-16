@@ -19,11 +19,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/demo.css') }}">
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!-- ICONS -->
     <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='images/icon.png') }}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='images/icon.png') }}">
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar-collapse">
 <!-- Preloader -->
 <div id="loading">
     <div id="loading-center">
@@ -39,233 +41,193 @@
 <!-- WRAPPER -->
 <div id="wrapper">
     <!-- NAVBAR -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <form class="navbar navbar-default navbar-fixed-top">
         <!-- <div class="brand">
-           <a href="user-cabinet.html"><img src="assets/images/icon.png" alt="logo2" class="img-responsive logo2"></a>
-           </div> -->
+               <a href="user-cabinet.html"><img src="{{ url_for('static', filename='images/icon.png') }}" alt="logo2" class="img-responsive logo2"></a>
+               </div> -->
         <div class="navbar-header">
             <a class="" href="{{ url_for('index') }}">
                 <img src="{{ url_for('static', filename='images/icon.png') }}" class="logo logo2" alt="">
             </a>
         </div>
-        <div class="container-fluid">
-            <div id="navbar-menu">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="">
-                        <a href="{{ url_for('index') }}">
-                            <h5>Головна сторінка</h5>
-                        </a>
-                    </li>
-                    <li class="dropdown-1">
-                        <a href="{{ url_for('user_cabinet') }}" class="dropdown-toggle icon-menu"
-                           data-toggle="dropdown">
-                            <i class="lnr lnr-alarm"></i>
-                            <span class="badge bg-danger">1</span>
-                        </a>
-                        <ul class="dropdown-1-content dropdown-menu notifications">
-                            <li><a href="{{ url_for('user_cabinet') }}" class="notification-item"><span
-                                    class="dot bg-warning"></span>Перевищено добову норму використання води.</a></li>
-                            <li><a href="{{ url_for('user_cabinet') }}" class="more">Переглянути сповіщення</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-1">
-                        <a href="{{ url_for('user_cabinet') }}" class="dropdown-toggle" data-toggle="dropdown"><img
-                                src="{{ url_for('static', filename='images/user.png') }}" class="img-circle"
-                                alt="Avatar"> <span>Петро</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
-                        <ul class="dropdown-1-content">
-                            <li><a href="{{ url_for('index') }}"><i class="lnr lnr-exit"></i> <span {{ logout() }}>Вийти</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+        <form method="post" action="{{ url_for('user') }}">
+            <div class="container-fluid">
+                <div id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="{{ url_for('index') }}">
+                                <h5>Головна сторінка</h5>
+                            </a>
+                        </li>
+                        <li class="dropdown-1">
+                            <a href="{{ url_for('user_cabinet') }}" class="dropdown-toggle icon-menu"
+                               data-toggle="dropdown">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger">1</span>
+                            </a>
+                            <ul class="dropdown-1-content dropdown-menu notifications">
+                                <li><a href="{{ url_for('user_cabinet') }}" class="notification-item"><i
+                                        class="fas fa-bell"></i>Перевищено добову норму використання води.</a></li>
+                                <li><a href="{{ url_for('user_cabinet') }}" class="more">Переглянути сповіщення</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-1">
+                            <a href="{{ url_for('user_cabinet') }}" class="dropdown-toggle" data-toggle="dropdown"><img
+                                    src="{{ url_for('static', filename='images/user.png') }}" class="img-circle"
+                                    alt="Avatar"> <span>Петро</span></a>
+                            <ul class="dropdown-1-content">
+                                <li><button href="{{ url_for('index') }}" name="exit" type="submit" value="exit"><i
+                                        class="fas fa-sign-out-alt"></i> <span>Вийти</span></button></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+        </nav>
+        <!-- END NAVBAR -->
+        <!-- LEFT SIDEBAR -->
+        <div id="sidebar-nav" class="sidebar">
+            <div class="sidebar-scroll">
+                <nav>
+                    <ul class="nav">
+                        <li class="left-menu"><a href="{{ url_for('user_cabinet') }}" class="active"><i
+                                class="fas fa-chart-line 5x"></i> <span>Загальна</span></a></li>
+                        <li class="left-menu"><a href="{{ url_for('gas') }}"><i class="fab fa-hotjar"></i> <span>Облік газу</span></a>
+                        </li>
+                        <li class="left-menu"><a href="{{ url_for('water') }}"><i class="fas fa-tint"></i> <span>Облік води</span></a>
+                        </li>
+                        <li class="left-menu"><a href="{{ url_for('user') }}"><i class="fas fa-cog"></i> <span>Налаштування</span></a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
-    </nav>
-    <!-- END NAVBAR -->
-    <!-- LEFT SIDEBAR -->
-    <div id="sidebar-nav" class="sidebar">
-        <div class="sidebar-scroll">
-            <nav>
-                <ul class="nav">
-                    <li class="left-menu"><a href="{{ url_for('user_cabinet') }}"><i class="lnr lnr-home"></i> <span>Загальна</span></a>
-                    </li>
-                    <li class="left-menu"><a href="{{ url_for('gas') }}"><i class="lnr lnr-chart-bars"></i> <span>Облік газу</span></a>
-                    </li>
-                    <li class="left-menu"><a href="{{ url_for('water') }}"><i class="lnr lnr-chart-bars"></i> <span>Облік води</span></a>
-                    </li>
-                    <li class="left-menu"><a href="{{ url_for('user') }}" class="active"><i class="lnr lnr-cog"></i>
-                        <span>Налаштування</span></a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <!-- END LEFT SIDEBAR -->
-    <!-- MAIN -->
-    <div class="main">
-        <!-- MAIN CONTENT -->
-        <div class="main-content">
-            <div class="container-fluid">
-                <div class="panel panel-profile">
-                    <div class="clearfix">
-                        <!-- LEFT COLUMN -->
-                        <div class="profile-left">
-                            <!-- PROFILE HEADER -->
-                            <div class="profile-header">
-                                <div class="overlay"></div>
-                                <div class="profile-main">
-                                    <img src="{{ url_for('static', filename='images/user.png') }}"
-                                         class="img-circle img-av" alt="Avatar">
-                                    <h3 class="name">Петро Петренко</h3>
-                                </div>
-                                <div class="profile-stat">
-                                    <div class="row">
-                                        <div class="col-md-6 stat-item">
-                                            2 <span>Контролери</span>
-                                        </div>
-                                        <div class="col-md-6 stat-item">
-                                            2 <span>місяці використання</span>
-                                        </div>
+        <!-- END LEFT SIDEBAR -->
+        <div class="main">
+            <!-- MAIN CONTENT -->
+            <div class="main-content">
+                <div class="container-fluid">
+                    <div class="panel panel-profile">
+                        <div class="clearfix">
+                            <!-- LEFT COLUMN -->
+                            <div class="profile-left">
+                                <!-- PROFILE HEADER -->
+                                <div class="profile-header">
+                                    <div class="overlay"></div>
+                                    <div class="profile-main">
+                                        <img src="{{ url_for('static', filename='images/user.png') }}"
+                                             class="img-circle img-av" alt="Avatar">
+                                        <h3 class="name">Петро Петренко</h3>
+                                    </div>
+                                    <div class="profile-stat">
+                                        <div class="row">
+                                            <div class="col-md-6 stat-item">
+                                                <h2>2</h2> <span>Контролери</span>
+                                            </div>
+                                            <div class="col-md-6 stat-item">
+                                                <h2>2</h2> <span>місяці використання</span>
+                                            </div>
 
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END PROFILE HEADER -->
+                                <div class="text-center"><a href="page-profile.html#" class="btn btn-primary">Редагувати
+                                    профіль</a></div>
+                            </div>
+                            <!-- END PROFILE DETAIL -->
+
+                            <!-- END LEFT COLUMN -->
+                            <!-- RIGHT COLUMN -->
+                            <div class="profile-right">
+                                <h4 class="heading">Інформація</h4>
+
+                                <!-- TABBED CONTENT -->
+                                <div class="custom-tabs-line tabs-line-bottom left-aligned">
+                                    <ul class="nav" role="tablist">
+                                        <li class="active"><a href="page-profile.html#tab-bottom-left1" role="tab"
+                                                              data-toggle="tab">Загальна інформація</a></li>
+                                        <li><a href="page-profile.html#tab-bottom-left2" role="tab" data-toggle="tab">Контролери
+                                            <span class="badge">2</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="tab-bottom-left1">
+                                        <ul class="list-unstyled activity-timeline">
+                                            <li>
+                                                <p>Ім'я: <a href="page-profile.html#">Петро</a></p>
+                                            </li>
+                                            <li>
+                                                <p>Прізвище: <a href="page-profile.html#"> Петренко</a></p>
+                                            </li>
+                                            <li>
+                                                <p>Номер телефону: <a href="page-profile.html#">+380 96 77 602 55</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>Домашня адреса: <a href="page-profile.html#"> м.Львів, вул.
+                                                    Г.Квітки-Основ'яненка, 11</a></p>
+                                            </li>
+                                            <li>
+                                                <p>Логін: <a href="page-profile.html#">Admin@gmail.com</a></p>
+                                            </li>
+                                            <li>
+                                                <p>Пароль: <a href="page-profile.html#">admin</a></p>
+                                            </li>
+                                        </ul>
+                                        <div class="margin-top-30 text-center"><a href="{{ url_for('meter') }}" class="btn">Камера</a></div>
+                                        <!--   <div class="margin-top-30 text-center"><a href="page-profile.html#" class="btn ">Дета</a></div>-->
+                                    </div>
+                                    <div class="tab-pane fade" id="tab-bottom-left2">
+                                        <div class="table-responsive">
+                                            <table class="table project-table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Id контролера</th>
+                                                    <th>Тип</th>
+                                                    <th>Час використання</th>
+                                                    <th>Статус</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td><a href="page-profile.html#">123 456</a></td>
+                                                    <td><span class="label label-success">Газ</span></td>
+                                                    <td><a href="page-profile.html#">27 днів</a></td>
+                                                    <td><span class="label label-success">Активний</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="page-profile.html#">123 456</a></td>
+                                                    <td><span class="label label-warning">Вода</span></td>
+                                                    <td><a href="page-profile.html#">5 днів</a></td>
+                                                    <td><span class="label label-success">Активний</span></td>
+                                                </tr>
+
+
+                                                </tbody>
+                                            </table>
+                                            <div class="margin-top-30 text-center"><a href="page-profile.html#"
+                                                                                      class="btn ">Додати контролер</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- END PROFILE HEADER -->
-
-
-                            <div class="text-center"><a href="page-profile.html#" class="btn btn-primary">Edit
-                                Profile</a></div>
+                            <!-- END TABBED CONTENT -->
                         </div>
-                        <!-- END PROFILE DETAIL -->
+                        <!-- END RIGHT COLUMN -->
                     </div>
-                    <!-- END LEFT COLUMN -->
-                    <!-- RIGHT COLUMN -->
-                    <div class="profile-right">
-                        <h4 class="heading">Інформація</h4>
-
-                        <!-- TABBED CONTENT -->
-                        <div class="custom-tabs-line tabs-line-bottom left-aligned">
-                            <ul class="nav" role="tablist">
-                                <li class="active"><a href="page-profile.html#tab-bottom-left1" role="tab"
-                                                      data-toggle="tab">Recent Activity</a></li>
-                                <li><a href="page-profile.html#tab-bottom-left2" role="tab" data-toggle="tab">Контролери
-                                    <span class="badge">2</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="tab-content">
-                            <div class="tab-pane fade in active" id="tab-bottom-left1">
-                                <ul class="list-unstyled activity-timeline">
-                                    <li>
-                                        <p>Логін: <a href="page-profile.html#">Admin</a></p>
-                                    </li>
-
-                                    <li>
-
-                                        <p>Пароль: <a href="page-profile.html#">admin</a></p>
-
-                                    </li>
-
-                                    <li>
-                                        <p>Загальна інформація 1 <a href="page-profile.html#">(щось)</a></p>
-
-                                    </li>
-                                </ul>
-                                <div class="margin-top-30 text-center"><a href="page-profile.html#"
-                                                                          class="btn btn-default">See all activity</a>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab-bottom-left2">
-                                <div class="table-responsive">
-                                    <table class="table project-table">
-                                        <thead>
-                                        <tr>
-                                            <th>Title</th>
-                                            <th>Progress</th>
-                                            <th>Leader</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td><a href="page-profile.html#">Spot Media</a></td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="60"
-                                                         aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                                        <span>60% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><img src="{{ url_for('static', filename='images/user2.png') }}"
-                                                     alt="Avatar" class="avatar img-circle"> <a
-                                                    href="page-profile.html#">Michael</a></td>
-                                            <td><span class="label label-success">ACTIVE</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="page-profile.html#">E-Commerce Site</a></td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="33"
-                                                         aria-valuemin="0" aria-valuemax="100" style="width: 33%;">
-                                                        <span>33% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><img src="{{ url_for('static', filename='images/user1.png') }}"
-                                                     alt="Avatar" class="avatar img-circle"> <a
-                                                    href="page-profile.html#">Antonius</a></td>
-                                            <td><span class="label label-warning">PENDING</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="page-profile.html#">Project 123GO</a></td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="68"
-                                                         aria-valuemin="0" aria-valuemax="100" style="width: 68%;">
-                                                        <span>68% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><img src="{{ url_for('static', filename='images/user1.png') }}"
-                                                     alt="Avatar" class="avatar img-circle"> <a
-                                                    href="page-profile.html#">Antonius</a></td>
-                                            <td><span class="label label-success">ACTIVE</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="page-profile.html#">Project 123GO</a></td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="68"
-                                                         aria-valuemin="0" aria-valuemax="100" style="width: 68%;">
-                                                        <span>68% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><img src="{{ url_for('static', filename='images/user1.png') }}"
-                                                     alt="Avatar" class="avatar img-circle"> <a
-                                                    href="page-profile.html#">Antonius</a></td>
-                                            <td><span class="label label-success">ACTIVE</span></td>
-                                        </tr>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END TABBED CONTENT -->
-                    </div>
-                    <!-- END RIGHT COLUMN -->
                 </div>
             </div>
         </div>
-    </div>
-    <!-- END MAIN CONTENT -->
+        <!-- END MAIN CONTENT -->
 </div>
 <!-- END MAIN -->
 </div>
 <div class="clearfix"></div>
 <!--Footer section-->
-<footer class="footer  footer1 bg-info p-top-20 p-bottom-30">
+<footer class="footer  footer1 bg-info p-top-20 p-bottom-30 m-top-20">
     <div class="text-center">
         <h4 class="text-white">© I-Met</h4>
     </div>
@@ -280,15 +242,16 @@
 <script src="{{ url_for('static', filename='js/vendor/bootstrap.js') }}"></script>
 <script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
-<script src="{{ url_for('static', filename='js/bootsnav.js') }}"></script>
+<script
+src = "{{ url_for('static', filename='js/bootsnav.js') }}" ></script>
 <script src="{{ url_for('static', filename='js/jquery.formchimp.js') }}"></script>
 <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 <!-- Javascript -->
-<!-- <script src="assets/vendor/jquery/jquery.min.js">
-   </script>-->
+<!-- <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"">
+         </script>-->
 <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ url_for('static', filename='vendor/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/common.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/common.js') }}"></script>
 </body>
 </html>
